@@ -23,9 +23,9 @@ const options = {
     targetDate = selectedDates[0];
 
     if (targetDate.getTime() <= new Date().getTime()) {
-      Notiflix.Notify.failure('Будь ласка, виберіть майбутню дату');
+      Notiflix.Notify.failure('Please choose a date in the future');
     } else {
-      Notiflix.Notify.success('Дата успішно вибрана');
+      Notiflix.Notify.success('The date has been successfully selected');
       refs.startBtnEl = false;
     }
   },
