@@ -77,3 +77,5 @@ refs.startBtnEl.addEventListener(
   'click',
   () => (intervalId = setInterval(updateTimer, 1000))
 );
+
+// help me
