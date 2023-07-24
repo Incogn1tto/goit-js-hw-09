@@ -9,6 +9,7 @@ const refs = {
   hoursValue: document.querySelector('[data-hours]'),
   minutesValue: document.querySelector('[data-minutes]'),
   secondsValue: document.querySelector('[data-seconds]'),
+  alarmEl: document.querySelector('#timer-alarm'),
 };
 
 let intervalId;
@@ -24,9 +25,10 @@ const options = {
 
     if (targetDate.getTime() <= new Date().getTime()) {
       Notiflix.Notify.failure('Please choose a date in the future');
+      refs.startBtnEl.disabled = true;
     } else {
       Notiflix.Notify.success('The date has been successfully selected');
-      refs.startBtnEl = false;
+      refs.startBtnEl.disabled = false;
     }
   },
 };
@@ -39,12 +41,9 @@ function updateTimer() {
 
   if (timeLeft <= 0) {
     clearInterval(intervalId);
-    refs.daysValue.textContent = '00';
-    refs.hoursValue.textContent = '00';
-    refs.minutesValue.textContent = '00';
-    refs.secondsValue.textContent = '00';
+    refs.startBtnEl.disabled = false;
 
-    refs.startBtnEl.disabled = true;
+    refs.alarmEl.play();
     return;
   }
 
@@ -77,5 +76,3 @@ refs.startBtnEl.addEventListener(
   'click',
   () => (intervalId = setInterval(updateTimer, 1000))
 );
-
-// help me
