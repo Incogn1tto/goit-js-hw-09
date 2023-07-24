@@ -33,6 +33,8 @@ const options = {
   },
 };
 
+refs.startBtnEl.disabled = true;
+
 flatpickr(refs.dateTimePicker, options);
 
 function updateTimer() {
